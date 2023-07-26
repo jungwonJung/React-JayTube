@@ -14,7 +14,7 @@ function VideoDetail() {
         <iframe
           id="player"
           type="text/html"
-          src={`http://www.youtube.com/embed/${video.id.videoId}`}
+          src={`https://www.youtube.com/embed/${video.id.videoId}`}
           width="100%"
           height="640"
           frameBorder="0"
