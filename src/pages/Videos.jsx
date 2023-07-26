@@ -11,16 +11,17 @@ function Videos() {
     isLoading,
     error,
     data: videos,
-  } = useQuery(["videos", keyword], () => youtube.search(keyword));
+  } = useQuery(["videos", keyword], () => youtube.search(keyword), {
+    staleTime: 1000 * 60 * 1,
+  });
   return (
     <>
-      <div>Videos {keyword ? "true" : "false"}</div>;
       {isLoading && <p>Loading ...</p>}
       {error && <p>Something is wrong</p>}
       {videos && (
-        <ul>
+        <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-2 gap-y-4 ">
           {videos.map((video) => (
-            <VideoCard key={video.id} video={video} />
+            <VideoCard key={video.id.videoId} video={video} />
           ))}
         </ul>
       )}
